@@ -28,7 +28,10 @@ Set ngram_range from unigrams to trigrams
 """
 vectorizer = TfidfVectorizer(ngram_range=(1, 3), analyzer='char', use_idf=False)
 
-# Create the Classifier using the vectorizer
+"""
+From https://www.youtube.com/watch?v=0B5eIE_1vpU&t=1411s
+Create the Classifier using the vectorizer
+"""
 clf = Pipeline([
     ('vec', vectorizer),
     ('clf', MultinomialNB()),
