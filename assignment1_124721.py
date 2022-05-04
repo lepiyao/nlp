@@ -1,3 +1,9 @@
+"""
+Group Nekomata
+Levi Hanny Santoso - 124721
+Mohammad Seyedalizadeh - 124744
+"""
+
 import json
 import pandas as pd 
 import numpy as np
@@ -51,23 +57,12 @@ print(classification_report(y_test, splitPredicted, target_names=np.unique(y_tra
 # Predict the outcome using the Test data using the .jsonl file
 predicted = clf.predict(testData.text)
 
+
 """
-Creating list temporary for values
+Creating Dataframe from the id and lang
 Then using pandas to conver from Data Frame to .jsonl file
+From https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_json.html
+ & https://pandas.pydata.org/docs/reference/api/pandas.concat.html
 """
-listKey1=[]
-listKey2=[]
-
-for s, p in zip(testData.id, predicted):
-    listKey1.append(s)
-    listKey2.append(p)
-
-prediction_result = [{'id': key1, 'lang': key2} for key1, key2 in zip(listKey1, listKey2)]
-
-# From https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_json.html
-df = pd.DataFrame(prediction_result)
-result = df.to_json(orient="records")
-parsed = json.loads(result)
-
-with open('./predictions.jsonl', 'w', encoding='utf-8') as c:
-    json.dump(parsed, c, ensure_ascii=False, indent=4)
+df = pd.concat([testData.id, pd.DataFrame(predicted, columns=['lang'])], axis=1)
+df.to_json('predictions.jsonl', orient='records', lines=True)
