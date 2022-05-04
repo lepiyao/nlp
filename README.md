@@ -1,8 +1,7 @@
 # nlp
 NLP's Assignments
 
-Assignment 1 for Language Identification 
-Group Nekomata
+**Group Nekomata** - Assignment 1 for Language Identification 
 
 We're using MultinomialNB because we're think it is the fastest one from this testing using Perceptron, KNN with 3 neighbours and MultinomialNB
 
