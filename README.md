@@ -26,8 +26,6 @@ NLP's Assignments
 
 Assignment 3 for Part-of-Speech Tagging
 **Group Nekomata** 
-- Levi Hanny Santoso - 124721
-- Mohammad Seyedalizadeh - 124744
 
 How to Use :
   - Place the .py code in the **same folder** as the **training.conllu**, **dev.conllu**, **test.conllu** and **base_config.cfg**
